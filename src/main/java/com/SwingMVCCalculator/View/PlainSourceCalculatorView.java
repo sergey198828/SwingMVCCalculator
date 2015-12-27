@@ -3,7 +3,7 @@ package com.SwingMVCCalculator.View;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class CalculatorView extends JFrame {
+public class PlainSourceCalculatorView extends JFrame {
 
 	/**
 	 Something related to serializable interface
@@ -12,13 +12,13 @@ public class CalculatorView extends JFrame {
 	
 	//Form objects (buttons, labels, text fields)
 	private JLabel expressionLabel = new JLabel("Result expression");
-	private JTextField expression = new JTextField(10);
+	private JTextField expression = new JTextField(20);
 	private JLabel memoryLabel = new JLabel("Memory");
-	private JTextField memory = new JTextField(10);
+	private JTextField memory = new JTextField(5);
 	private JLabel inputLabel = new JLabel("Input");
-	private JTextField input = new JTextField(10);
+	private JTextField input = new JTextField(5);
 	private JLabel resultLabel = new JLabel("Result value");
-	private JTextField result = new JTextField(10);
+	private JTextField result = new JTextField(5);
 	private JButton cButton = new JButton("C");
 	private JButton ceButton = new JButton("CE");
 	private JButton mPlusButton = new JButton("M+");
@@ -43,12 +43,14 @@ public class CalculatorView extends JFrame {
 
 	
 	//Form panel
-	public CalculatorView() {
+	public PlainSourceCalculatorView() {
 		JPanel calcPanel = new JPanel();
 		//General form settings
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(600,600);
+		this.setSize(250,300);
+		this.setResizable(false);
 		this.setLocationRelativeTo(null);
+		this.setTitle("SwingMVCCalculator");
 		//Form inner objects
 		calcPanel.add(expressionLabel);
 		calcPanel.add(expression);
@@ -79,7 +81,7 @@ public class CalculatorView extends JFrame {
 		calcPanel.add(multiplyButton);
 		calcPanel.add(divideButton);
 		calcPanel.add(commaButton);
-		//Start form
+		//Adding panel to form
 		this.add(calcPanel);
 	}
 	

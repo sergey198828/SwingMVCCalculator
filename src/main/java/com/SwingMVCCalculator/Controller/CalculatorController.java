@@ -4,11 +4,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import com.SwingMVCCalculator.Model.CalculatorModel;
-import com.SwingMVCCalculator.View.CalculatorView;
+import com.SwingMVCCalculator.View.PlainSourceCalculatorView;
+import com.SwingMVCCalculator.View.WindowBuilderCalculatorView;
 
 public class CalculatorController {
 	
-	private CalculatorView	view;
+	private WindowBuilderCalculatorView	view;
 	
 	private CalculatorModel calculator;
 	
@@ -19,7 +20,7 @@ public class CalculatorController {
 		view.setMemory(calculator.getMemory());
 	}
 	
-	public CalculatorController(CalculatorView view, CalculatorModel calculator){
+	public CalculatorController(WindowBuilderCalculatorView view, CalculatorModel calculator){
 		this.view = view;
 		this.calculator = calculator;
 		
