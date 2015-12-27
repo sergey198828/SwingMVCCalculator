@@ -19,6 +19,9 @@ public class CalculatorModel {
 	//Stores last user input operator
 	private Character tempOperator = '+';
 	
+	//Memmory
+	private String memory = "+0.";
+	
 	//Build expression String to show
 	@Override
 	public String toString(){
@@ -70,13 +73,20 @@ public class CalculatorModel {
 	public Double getTempOperand(){
 		return Double.parseDouble(tempOperandSign + tempOperandInteger + "." + tempOperandFloat);
 	}
-	
+	public String getTempOperandString(){
+		return tempOperandSign + tempOperandInteger + "." + tempOperandFloat;
+	}
 	//Voids temp operand
 	public void voidTempOperand(){
 		tempOperandSign='+';
 		tempOperandInteger = "0";
 		tempOperandFloat="";
 		tempOperandFloatPartEditModeFlag=false;
+	}
+	
+	//Calculates memory to show
+	public Double getMemory(){
+		return Double.parseDouble(memory);
 	}
 	
 	//C button action
@@ -102,34 +112,42 @@ public class CalculatorModel {
 	
 	//Plus button action
 	public void plus(){
+		tempOperator = '+';
+		if(getTempOperand()==0.0) return;
 		operands.add(getTempOperand());
 		operators.add(tempOperator);
 		voidTempOperand();
-		tempOperator = '+';
+
 	}
 	
 	//Minus button action
 	public void minus(){
+		tempOperator = '-';	
+		if(getTempOperand()==0.0) return;
 		operands.add(getTempOperand());
 		operators.add(tempOperator);
 		voidTempOperand();
-		tempOperator = '-';	
+
 	}
 	
 	//Multiply button action
 	public void multyply(){
+		tempOperator = '*';
+		if(getTempOperand()==0.0) return;
 		operands.add(getTempOperand());
 		operators.add(tempOperator);
 		voidTempOperand();
-		tempOperator = '*';
+
 	}
 	
 	//Divide button action
 	public void divide(){
+		tempOperator = '/';	
+		if(getTempOperand()==0.0) return;
 		operands.add(getTempOperand());
 		operators.add(tempOperator);
 		voidTempOperand();
-		tempOperator = '/';	
+
 	}
 	
 	//One button action
@@ -188,5 +206,24 @@ public class CalculatorModel {
 	//Comma button action
 	public void comma(){
 		if(!tempOperandFloatPartEditModeFlag) tempOperandFloatPartEditModeFlag = true;
+	}
+	//M+ button action
+	public void mPlus(){
+		memory = getTempOperandString();
+	}
+	//MR button action
+	public void mRead(){
+		tempOperandSign=memory.charAt(0);
+		String unsigned = memory.substring(1);
+		String[] intAndFloat = unsigned.split("\\.");
+		tempOperandInteger = intAndFloat[0]; 
+		if(intAndFloat.length==2)
+			tempOperandFloat = intAndFloat[1];
+		else
+			tempOperandFloat = "";
+	}
+	//MC button action
+	public void mClear(){
+		memory = "+0.";
 	}
 }

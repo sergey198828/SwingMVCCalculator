@@ -13,12 +13,17 @@ public class CalculatorView extends JFrame {
 	//Form objects (buttons, labels, text fields)
 	private JLabel expressionLabel = new JLabel("Result expression");
 	private JTextField expression = new JTextField(10);
-	private JLabel resultLabel = new JLabel("Result value");
-	private JTextField result = new JTextField(10);
+	private JLabel memoryLabel = new JLabel("Memory");
+	private JTextField memory = new JTextField(10);
 	private JLabel inputLabel = new JLabel("Input");
 	private JTextField input = new JTextField(10);
+	private JLabel resultLabel = new JLabel("Result value");
+	private JTextField result = new JTextField(10);
 	private JButton cButton = new JButton("C");
 	private JButton ceButton = new JButton("CE");
+	private JButton mPlusButton = new JButton("M+");
+	private JButton mReadButton = new JButton("MR");
+	private JButton mClearButton = new JButton("MC");
 	private JButton oneButton = new JButton("1");
 	private JButton twoButton = new JButton("2");
 	private JButton threeButton = new JButton("3");
@@ -34,22 +39,30 @@ public class CalculatorView extends JFrame {
 	private JButton minusButton = new JButton("-");
 	private JButton multiplyButton = new JButton("*");
 	private JButton divideButton = new JButton("/");
+	private JButton commaButton = new JButton(",");
+
 	
 	//Form panel
 	public CalculatorView() {
 		JPanel calcPanel = new JPanel();
-		
+		//General form settings
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(600,600);
-		
+		this.setLocationRelativeTo(null);
+		//Form inner objects
 		calcPanel.add(expressionLabel);
 		calcPanel.add(expression);
-		calcPanel.add(resultLabel);
-		calcPanel.add(result);
+		calcPanel.add(memoryLabel);
+		calcPanel.add(memory);
 		calcPanel.add(inputLabel);
 		calcPanel.add(input);
+		calcPanel.add(resultLabel);
+		calcPanel.add(result);
 		calcPanel.add(cButton);
 		calcPanel.add(ceButton);
+		calcPanel.add(mPlusButton);
+		calcPanel.add(mReadButton);
+		calcPanel.add(mClearButton);
 		calcPanel.add(oneButton);
 		calcPanel.add(twoButton);
 		calcPanel.add(threeButton);
@@ -65,13 +78,18 @@ public class CalculatorView extends JFrame {
 		calcPanel.add(minusButton);
 		calcPanel.add(multiplyButton);
 		calcPanel.add(divideButton);
-		
+		calcPanel.add(commaButton);
+		//Start form
 		this.add(calcPanel);
 	}
 	
 	//Text field setters
 	public void setExpression(String expression){
 		this.expression.setText(expression);
+	}
+	
+	public void setMemory(Double memory){
+		this.memory.setText(memory.toString());
 	}
 	
 	public void setResult(Double result){
@@ -90,6 +108,18 @@ public class CalculatorView extends JFrame {
 	//private JButton ceButton = new JButton("CE");
 	public void ceButtonListener(ActionListener listenForCeButton){
 		ceButton.addActionListener(listenForCeButton);		
+	}
+	//private JButton mPlusButton = new JButton("M+");
+	public void mPlusButtonListener(ActionListener listenForMPlusButton){
+		mPlusButton.addActionListener(listenForMPlusButton);		
+	}
+	//private JButton mReadButton = new JButton("MR");
+	public void mReadButtonListener(ActionListener listenForMReadButton){
+		mReadButton.addActionListener(listenForMReadButton);		
+	}
+	//private JButton mClearButton = new JButton("MC");
+	public void mClearButtonListener(ActionListener listenForMClearButton){
+		mClearButton.addActionListener(listenForMClearButton);		
 	}
 	//private JButton oneButton = new JButton("1");
 	public void oneButtonListener(ActionListener listenForOneButton){
@@ -150,5 +180,9 @@ public class CalculatorView extends JFrame {
 	//private JButton divideButton = new JButton("/");
 	public void divideButtonListener(ActionListener listenForDivideButton){
 		divideButton.addActionListener(listenForDivideButton);		
+	}
+	//private JButton commaButton = new JButton(",");
+	public void commaButtonListener(ActionListener listenForCommaButton){
+		commaButton.addActionListener(listenForCommaButton);		
 	}
 }

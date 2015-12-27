@@ -16,6 +16,7 @@ public class CalculatorController {
 		view.setResult(calculator.result());
 		view.setExpression(calculator.toString());
 		view.setInput(calculator.getTempOperand());
+		view.setMemory(calculator.getMemory());
 	}
 	
 	public CalculatorController(CalculatorView view, CalculatorModel calculator){
@@ -24,6 +25,9 @@ public class CalculatorController {
 		
 		this.view.cButtonListener(new CButtonListener());
 		this.view.ceButtonListener(new CEButtonListener());
+		this.view.mPlusButtonListener(new MPlusButtonListener());
+		this.view.mReadButtonListener(new MReadButtonListener());
+		this.view.mClearButtonListener(new MClearButtonListener());
 		this.view.oneButtonListener(new OneButtonListener());
 		this.view.twoButtonListener(new TwoButtonListener());
 		this.view.threeButtonListener(new ThreeButtonListener());
@@ -39,6 +43,7 @@ public class CalculatorController {
 		this.view.minusButtonListener(new MinusButtonListener());
 		this.view.multiplyButtonListener(new MultiplyButtonListener());
 		this.view.divideButtonListener(new DivideButtonListener());
+		this.view.commaButtonListener(new CommaButtonListener());
 	}
 	
 	class CButtonListener implements ActionListener{
@@ -54,6 +59,33 @@ public class CalculatorController {
 
 		public void actionPerformed(ActionEvent e) {
 			calculator.ce();
+			updateView();
+		}		
+	
+	}
+	
+	class MPlusButtonListener implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			calculator.mPlus();
+			updateView();
+		}		
+	
+	}
+	
+	class MReadButtonListener implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			calculator.mRead();
+			updateView();
+		}		
+	
+	}
+	
+	class MClearButtonListener implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			calculator.mClear();
 			updateView();
 		}		
 	
@@ -189,6 +221,15 @@ public class CalculatorController {
 	
 		public void actionPerformed(ActionEvent e) {
 			calculator.divide();
+			updateView();
+		}
+		
+	}
+	
+	class CommaButtonListener implements ActionListener{
+		
+		public void actionPerformed(ActionEvent e) {
+			calculator.comma();
 			updateView();
 		}
 		
