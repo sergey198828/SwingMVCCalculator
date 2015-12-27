@@ -95,7 +95,7 @@ public class WindowBuilderCalculatorView extends JFrame {
 		calcPanel.add(result);
 		cButton.setFont(new Font("Tahoma", Font.BOLD, 11));
 		cButton.setForeground(Color.BLACK);
-		cButton.setBounds(171, 117, 100, 38);
+		cButton.setBounds(170, 117, 101, 38);
 		cButton.setToolTipText("Resets whole calculation");
 		calcPanel.add(cButton);
 		ceButton.setFont(new Font("Tahoma", Font.BOLD, 8));
